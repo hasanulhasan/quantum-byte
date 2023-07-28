@@ -1,6 +1,7 @@
+import MainLayout from '@/components/Layouts/MainLayout';
 import React from 'react';
 
-const about = () => {
+const About = () => {
   return (
     <div>
       <h1>This is about</h1>
@@ -8,4 +9,8 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;
+
+About.getLayout = function getLayout(page){
+  return <MainLayout>{page}</MainLayout>
+}

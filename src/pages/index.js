@@ -1,3 +1,4 @@
+import MainLayout from '@/components/Layouts/MainLayout'
 import Head from 'next/head'
 // import logo from './../assets/logo.png'
 export default function Home() {
@@ -12,4 +13,8 @@ export default function Home() {
       <h1>Project setup ready</h1>
     </>
   )
+}
+
+Home.getLayout = function getLayout(page){
+  return <MainLayout>{page}</MainLayout>
 }
