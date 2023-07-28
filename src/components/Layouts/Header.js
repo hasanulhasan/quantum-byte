@@ -1,10 +1,89 @@
-import React from 'react';
+import { AppBar, Box, Divider, Drawer, IconButton, Toolbar, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import MenuIcon from '@mui/icons-material/Menu';
+import Link from 'next/link';
+// import Logo from '../../images/logo.svg'
+import styles from './../../styles/header.module.css'
 
 const Header = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  //menu drawer
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen)
+  }
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <Typography
+        color={'goldenrod'}
+        variant='h5'
+        component={'div'}
+        sx={{ flexGrow: 1, my: 2, fontWeight: 'bold' }}
+      >
+        Quantum Byte
+      </Typography>
+      <Divider />
+      <ul className={styles.mobileNavigation}>
+        <li><Link href='/'>Home</Link></li>
+        <li><Link href='/about'>About</Link></li>
+        <li><Link href='/contact'>Contact</Link></li>
+      </ul>
+    </Box>
+  )
   return (
-    <div>
-      <h1>header</h1>
-    </div>
+    <>
+      <Box sx={{
+                marginBottom: 2
+              }}>
+        <AppBar component={'nav'} sx={{ bgcolor: 'black' }}>
+          <Toolbar>
+            <IconButton
+              color='inherit'
+              aria-level='open drawer'
+              edge='start'
+              sx={{
+                margin: 2, display: { sm: 'none' }
+              }}
+              onClick={handleDrawerToggle}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              color={'goldenrod'}
+              variant='h5'
+              component={'div'}
+              sx={{ flexGrow: 1, fontWeight: 'bold'  }}
+            >
+              Quantum Byte
+            </Typography>
+            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              <ul className={styles.navigationMenu}>
+                <li><Link href='/'>Home</Link></li>
+                <li><Link href='/about'>About</Link></li>
+                <li><Link href='/contact'>Contact</Link></li>
+              </ul>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        <Box component='nav'>
+          <Drawer
+            variant='temporary'
+            onClose={handleDrawerToggle}
+            open={mobileOpen}
+            sx={{
+              display: { xs: 'block', sm: 'none' }, "& .MuiDrawer-paper": {
+                boxSizing: 'border-box',
+                width: '240px'
+              }
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Box>
+        <Box>
+          <Toolbar />
+        </Box>
+      </Box>
+    </>
   );
 };
 
