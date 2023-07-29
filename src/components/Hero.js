@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from './../styles/hero.module.css'
 const Hero = () => {
   return (
-    <Box className={styles.home} sx={{ backgroundImage: `url(${HeroImage})` }}>
+    <Box className={styles.home} sx={{ backgroundImage: `url(https://thumbs.dreamstime.com/b/bright-blue-tech-communication-banner-vector-creative-background-75274348.jpg)` }}>
         <div className={styles.headerContainer} >
           <h1>Food Website</h1>
           <p>Best Food in India</p>

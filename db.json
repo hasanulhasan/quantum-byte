@@ -1,0 +1,94 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Intel Processor",
+      "img": "https://s.yimg.com/uu/api/res/1.2/oYlUcf7kKYrwwKJmIhrxzA--~B/Zmk9ZmlsbDtoPTU5Mjt3PTg3NTthcHBpZD15dGFjaHlvbg--/https://o.aolcdn.com/hss/storage/midas/fd51ed18dc56eb7efe37ca0fdee37a6/205318902/Intel+Core+i9+x+series.jpg.cf.jpg",
+      "price": "250",
+      "category": "Processor",
+      "rating": "5",
+      "status": true,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam?",
+      "features" : ["Intel", "Core-i9" ],
+      "reviews": [
+        "this is my comment",
+        "this is your"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "HP Monitor",
+      "img": "https://images.samsung.com/is/image/samsung/ie-monitor-ft350-lf27t350fhuxen-frontblack-319955958?$650_519_PNG$",
+      "price": "399",
+      "category": "Monitor",
+      "rating": "5",
+      "status": true,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam?",
+      "features" : ["HP", "Good Pixel" ],
+      "reviews": [
+        "this is my comment",
+        "this is your"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Kingstone SSD",
+      "img": "https://www.nextech.sk/files/photo/2020-11/78516/3f8694/3x-SSD-PCIe-4-0-1_872.jpg",
+      "price": "259",
+      "category": "SSD",
+      "rating": "4",
+      "status": false,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam?",
+      "features" : ["6000Mbps", "250GB" ],
+      "reviews": [
+        "this is my comment",
+        "this is your"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Kingstone SSD",
+      "img": "https://s.yimg.com/uu/api/res/1.2/oYlUcf7kKYrwwKJmIhrxzA--~B/Zmk9ZmlsbDtoPTU5Mjt3PTg3NTthcHBpZD15dGFjaHlvbg--/https://o.aolcdn.com/hss/storage/midas/fd51ed18dc56eb7efe37ca0fdee37a6/205318902/Intel+Core+i9+x+series.jpg.cf.jpg",
+      "price": "259",
+      "category": "SSD",
+      "rating": "4",
+      "status": false,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam?",
+      "features" : ["6000Mbps", "250GB" ],
+      "reviews": [
+        "this is my comment",
+        "this is your"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Kingstone SSD",
+      "img": "https://images.samsung.com/is/image/samsung/ie-monitor-ft350-lf27t350fhuxen-frontblack-319955958?$650_519_PNG$",
+      "price": "259",
+      "category": "SSD",
+      "rating": "4",
+      "status": false,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam?",
+      "features" : ["6000Mbps", "250GB" ],
+      "reviews": [
+        "this is my comment",
+        "this is your"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Kingstone SSD",
+      "img": "https://www.nextech.sk/files/photo/2020-11/78516/3f8694/3x-SSD-PCIe-4-0-1_872.jpg",
+      "price": "259",
+      "category": "SSD",
+      "rating": "4",
+      "status": false,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut laudantium voluptates quaerat, excepturi soluta quos repudiandae consequuntur? Magnam labore blanditiis enim, laborum atque nulla veniam impedit necessitatibus totam, sed quibusdam?",
+      "features" : ["6000Mbps", "250GB" ],
+      "reviews": [
+        "this is my comment",
+        "this is your"
+      ]
+    }
+  ]
+}

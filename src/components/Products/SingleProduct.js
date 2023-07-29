@@ -1,52 +1,112 @@
-import {Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
-
+import { Box, CardMedia, Container, Stack, Typography } from '@mui/material';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import SouthEastIcon from '@mui/icons-material/SouthEast';
 const SingleProduct = ({product}) => {
-  const {name, img, price, rating, category} = product;
-
+  const {id,name, img, price, rating, category, status, features, description, reviews} = product;
   return (
-    <Card sx={{maxWidth: '390px', display: 'flex', m:2}} >
-              <CardActionArea >
-                <Box sx={{ 
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignContent: 'center',
-                        alignItems: 'center'
-                      }}>
-                <CardMedia
-                  sx={{ minHeight: '200px',
-                        maxWidth: '250px',
-                      }}
-                  component='img'
-                  src={img}
-                  alt='product' />
-                </Box>
-              <CardContent>
-                <Typography variant='h5' gutterBottom component={'div'}>
-                  {name}
-                </Typography>
-                <Typography variant='body2' >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore repellendus necessitatibus perferendis iste eveniet vel illum ea atque non aspernatur veniam.
-                </Typography>
-                <Box sx={{ 
+    <Box>
+      <Box
+        sx={{
+          backgroundImage: `url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/42e89993546277.5ed6ae8979655.png)`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          height: "250px",
+        }}
+      >
+        <Typography
+          align="center"
+          color={"black"}
+          variant="h2"
+          sx={{ fontWeight: 900, padding: 10 }}
+        >
+          {name}
+        </Typography>
+      </Box>
+      <Container>
+        <hr />
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          spacing={{ xs: 1, sm: 2, md: 8 }}
+          mt={8}
+        >
+          <Box flex={3} sx={{ padding: "18px 100px 100px 100px" }}>
+            <Typography
+              m={4}
+              align="center"
+              color={"gray"}
+              variant="body1"
+              sx={{ fontWeight: 900 }}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut
+              laudantium voluptates quaerat, excepturi soluta quos repudiandae
+              consequuntur? 
+            </Typography>
+            <CardMedia
+              component="img"
+              height="400px"
+              image={img}
+              alt="green iguana"
+            />
+            <Typography align="center" variant="h4" mt={2}>
+              {name}
+            </Typography>
+            <Box sx={{ 
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignContent: 'center',
                         alignItems: 'center',
-                        mt: 1
+                        mx: 4,
+                        mt:2
                       }}>
-                <Typography variant='body2' gutterBottom component={'div'}>
+                <Box>
+                <Typography variant='h5' gutterBottom component={'div'}>
                   Category: {category}
                 </Typography>
-                <Typography variant='body2' gutterBottom component={'div'}>
+                <Typography variant='h5' gutterBottom component={'div'}>
                   Price : {price}
                 </Typography>
-                <Typography variant='body2' gutterBottom component={'div'}>
+                </Box>
+                <Box>
+                <Typography variant='h5' gutterBottom component={'div'}>
                   Rating : {rating}
                 </Typography>
+                <Typography variant='h5' gutterBottom component={'div'}>
+                   {status? 'In Stock': 'Out of Stock'}
+                </Typography>
                 </Box>
-              </CardContent>
-              </CardActionArea>
-    </Card>
+                </Box>
+                <Box sx={{mx: 4, mt:1}}>
+                <Typography variant='h6' gutterBottom component={'div'}>
+                  Features
+                </Typography>
+                  {
+                    features.map((feature,index) => <Typography ml={1} key={index}><SouthEastIcon/>{feature}</Typography>)
+                  }
+                </Box>
+            <Typography
+              m={4}
+              color={"gray"}
+              variant="body1"
+              sx={{ fontWeight: 900 }}
+            >
+              {description}
+            </Typography>
+            <Box sx={{mx: 4, mt:1}}>
+                <Typography variant='h6' gutterBottom component={'div'}>
+                  Reviews
+                </Typography>
+                  {
+                    reviews.map((review,index) => <Typography ml={1} key={index}><SouthEastIcon mt={1}></SouthEastIcon>{review}</Typography>)
+                  }
+                </Box>
+          </Box>
+
+          <Box flex={1}>
+           
+          </Box>
+        </Stack>
+      </Container>
+    </Box>
   );
 };
 

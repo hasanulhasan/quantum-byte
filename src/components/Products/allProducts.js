@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useGetProductsQuery } from '@/redux/api/apiSlice';
 import { Box } from '@mui/material';
-import SingleProduct from './SingleProduct';
+import ProductCard from './ProductCard';
 
 const AllProducts = () => {
   const {data:products} = useGetProductsQuery();
@@ -40,7 +40,7 @@ const AllProducts = () => {
     </Box>
       <Box sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
         {
-          products?.map(product => <SingleProduct key={product.id} product={product}></SingleProduct>)
+          products?.map(product => <ProductCard key={product.id} product={product}></ProductCard>)
         }
       </Box>
     </div>

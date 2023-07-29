@@ -32,7 +32,7 @@ const Header = () => {
   return (
     <>
       <Box sx={{
-                marginBottom: 2
+                // marginBottom: 2
               }}>
         <AppBar component={'nav'} sx={{ bgcolor: 'black' }}>
           <Toolbar>
