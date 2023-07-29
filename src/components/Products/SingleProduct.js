@@ -1,4 +1,4 @@
-import {Box, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import {Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 
 const SingleProduct = ({product}) => {
   const {name, img, price, rating, category} = product;
@@ -25,9 +25,25 @@ const SingleProduct = ({product}) => {
                   {name}
                 </Typography>
                 <Typography variant='body2' >
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore repellendus necessitatibus perferendis iste eveniet vel illum ea atque non aspernatur veniam.
                 </Typography>
+                <Box sx={{ 
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignContent: 'center',
+                        alignItems: 'center',
+                        mt: 1
+                      }}>
+                <Typography variant='body2' gutterBottom component={'div'}>
+                  Category: {category}
+                </Typography>
+                <Typography variant='body2' gutterBottom component={'div'}>
+                  Price : {price}
+                </Typography>
+                <Typography variant='body2' gutterBottom component={'div'}>
+                  Rating : {rating}
+                </Typography>
+                </Box>
               </CardContent>
               </CardActionArea>
     </Card>
