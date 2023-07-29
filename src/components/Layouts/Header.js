@@ -1,4 +1,4 @@
-import { AppBar, Box, Divider, Drawer, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Divider, Drawer, FormControl, IconButton, InputLabel, MenuItem, Select, Toolbar, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
@@ -55,12 +55,34 @@ const Header = () => {
             >
               Quantum Byte
             </Typography>
-            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            <Box sx={{ display: { xs: 'none', sm: 'block'} }}>
               <ul className={styles.navigationMenu}>
                 <li><Link href='/'>Home</Link></li>
                 <li><Link href='/about'>About</Link></li>
                 <li><Link href='/contact'>Contact</Link></li>
+                <li><Button variant='contained' color='success'>Add PC</Button></li>
+                <li><Box sx={{ minWidth: 120, bgcolor: '#6D6765', color: 'success' }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Category</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value='Category'
+          label="Age"
+          // onChange={handleChange}
+        >
+          <MenuItem value={10}>Motherboard</MenuItem>
+          <MenuItem value={20}>Processor</MenuItem>
+          <MenuItem value={30}>RAM</MenuItem>
+          <MenuItem value={30}>PSU</MenuItem>
+          <MenuItem value={30}>SSD</MenuItem>
+          <MenuItem value={30}>Monitor</MenuItem>
+          <MenuItem value={30}>Others</MenuItem>
+        </Select>
+      </FormControl>
+    </Box></li>
               </ul>
+              
             </Box>
           </Toolbar>
         </AppBar>
