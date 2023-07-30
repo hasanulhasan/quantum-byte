@@ -3,6 +3,7 @@ import MainLayout from '@/components/Layouts/MainLayout'
 import Head from 'next/head'
 import logo from './../../public/logo.png'
 import AllProducts from '@/components/Products/AllProducts'
+import Categories from '@/components/Category/Categories'
 export default function Home() {
   return (
     <>
@@ -14,6 +15,7 @@ export default function Home() {
       </Head>
       {/* <Hero/> */}
       <AllProducts/>
+      <Categories/>
     </>
   )
 }
