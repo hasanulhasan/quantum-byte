@@ -1,9 +1,10 @@
-import {Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { Description } from '@mui/icons-material';
+import {Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Rating, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const ProductCard = ({product}) => {
-  const {id,name, img, price, rating, category, status} = product;
+  const {id,name, img, price, rating, category, status,description} = product;
   const router = useRouter();
   const handleDetailsPage = ()=> {
     router.push(`/${id}`)
@@ -30,28 +31,45 @@ const ProductCard = ({product}) => {
                   {name}
                 </Typography>
                 <Typography variant='body2' >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore repellendus necessitatibus perferendis iste eveniet vel illum ea atque non aspernatur veniam.
+                {(description).substr(0, 140)}
                 </Typography>
                 <Box sx={{ 
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignContent: 'center',
                         alignItems: 'center',
-                        mt: 1
+                        mt:1
                       }}>
-                <Typography variant='body2' gutterBottom component={'div'}>
-                  Category: {category}
+                <Box>
+                <Typography sx={{
+                 background: 'rgba(76, 175, 80, 0.4)',
+                 textAlign: 'center',
+                 borderRadius: '12px'
+                }} 
+                 variant='body2' gutterBottom component={'div'}>
+                  {category}
                 </Typography>
+                <Stack spacing={1}>
+                  <Rating name="half-rating-read" defaultValue={Number(rating)} precision={0.5} readOnly />
+                </Stack>
+                </Box>
+                <Box>
                 <Typography variant='body2' gutterBottom component={'div'}>
                   Price : {price}
                 </Typography>
                 <Typography variant='body2' gutterBottom component={'div'}>
-                  Rating : {rating}
-                </Typography>
-                <Typography variant='body2' gutterBottom component={'div'}>
-                   {status? 'In Stock': 'Out of Stock'}
+                   {status? 
+                   <Typography color='green'>
+                   In Stock
+                 </Typography>
+                   : 
+                   <Typography color='red'>
+                   Out of Stock
+                 </Typography>
+                   }
                 </Typography>
                 </Box>
+              </Box>
               </CardContent>
               </CardActionArea>
     </Card>

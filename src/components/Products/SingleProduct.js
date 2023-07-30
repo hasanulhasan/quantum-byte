@@ -1,4 +1,4 @@
-import { Box, CardMedia, Container, Stack, Typography } from '@mui/material';
+import { Box, CardMedia, Container, Rating, Stack, Typography } from '@mui/material';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 const SingleProduct = ({product}) => {
@@ -30,7 +30,7 @@ const SingleProduct = ({product}) => {
           mt={8}
         >
           <Box flex={3} sx={{ padding: "18px 100px 100px 100px" }}>
-            <Typography
+            {/* <Typography
               m={4}
               align="center"
               color={"gray"}
@@ -40,7 +40,7 @@ const SingleProduct = ({product}) => {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut
               laudantium voluptates quaerat, excepturi soluta quos repudiandae
               consequuntur? 
-            </Typography>
+            </Typography> */}
             <CardMedia
               component="img"
               height="400px"
@@ -59,30 +59,38 @@ const SingleProduct = ({product}) => {
                         mt:2
                       }}>
                 <Box>
-                <Typography variant='h5' gutterBottom component={'div'}>
+                <Typography variant='h6' gutterBottom component={'div'}>
                   Category: {category}
                 </Typography>
-                <Typography variant='h5' gutterBottom component={'div'}>
-                  Price : {price}
-                </Typography>
+                <Stack spacing={1}>
+                  <Rating name="size-small" defaultValue={Number(rating)} precision={0.5} readOnly />
+                </Stack>
                 </Box>
                 <Box>
-                <Typography variant='h5' gutterBottom component={'div'}>
-                  Rating : {rating}
+                <Typography variant='h6' gutterBottom component={'div'}>
+                  Price : {price}
                 </Typography>
-                <Typography variant='h5' gutterBottom component={'div'}>
-                   {status? 'In Stock': 'Out of Stock'}
+                <Typography variant='h6' gutterBottom component={'div'}>
+                   {status? 
+                   <Typography color='green'>
+                   In Stock
+                 </Typography>
+                   : 
+                   <Typography color='red'>
+                   Out of Stock
+                 </Typography>
+                   }
                 </Typography>
                 </Box>
-                </Box>
-                <Box sx={{mx: 4, mt:1}}>
+              </Box>
+              <Box sx={{mx: 4, mt:1}}>
                 <Typography variant='h6' gutterBottom component={'div'}>
                   Features
                 </Typography>
                   {
                     features.map((feature,index) => <Typography ml={1} key={index}><SouthEastIcon/>{feature}</Typography>)
                   }
-                </Box>
+              </Box>
             <Typography
               m={4}
               color={"gray"}

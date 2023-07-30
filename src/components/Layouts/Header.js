@@ -60,7 +60,7 @@ const Header = () => {
                 <li><Link href='/'>Home</Link></li>
                 <li><Link href='/about'>About</Link></li>
                 <li><Link href='/contact'>Contact</Link></li>
-                <li><Button variant='contained' color='success'>Add PC</Button></li>
+                <li><Link href='/addpc'><Button variant='contained' color='success'>Add PC</Button></Link></li>
                 <li><Box sx={{ minWidth: 120, bgcolor: '#6D6765', color: 'success' }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Category</InputLabel>
