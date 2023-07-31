@@ -3,6 +3,7 @@ import kidsImage from "../../assets/processor.png";
 import womenImage from "../../assets/ram.jpg";
 import menImage from "../../assets/ssd.jpg";
 import { Box, Divider, Stack, styled, Typography } from "@mui/material";
+import CategoryCard from "./CategoryCard";
 
 const StyledBox = styled(Box)({
   height: 200,
@@ -19,6 +20,39 @@ const StyledTypography = styled(Typography)({
   borderRadius: '10px'
 });
 
+const categories = [
+  {
+    id: 1,
+    ct_name: 'RAM',
+    img: 'https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png'
+  },
+  {
+    id: 2,
+    ct_name: 'Processor',
+    img: 'https://cdn.mos.cms.futurecdn.net/NSYr6nsP63PRbdJFMNL5pT.jpg'
+  },
+  {
+    id: 3,
+    ct_name: 'SSD',
+    img: 'https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png'
+  },
+  {
+    id: 4,
+    ct_name: 'Motherboard',
+    img: 'https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png'
+  },
+  {
+    id: 5,
+    ct_name: 'Monitor',
+    img: 'https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png'
+  },
+  {
+    id: 6,
+    ct_name: 'PSU',
+    img: 'https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png'
+  },
+]
+
 const Categories = () => {
   return (
     <Box sx={{ mx: 5, mt: 3 }}>
@@ -28,36 +62,9 @@ const Categories = () => {
         divider={<Divider orientation="vertical" flexItem />}
         mt={5}
       >
-        <StyledBox sx={{ backgroundImage: `url(https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png)` }}>
-          <StyledTypography align="center" variant="h4">
-            Processor
-          </StyledTypography>
-        </StyledBox>
-        <StyledBox sx={{ backgroundImage: `url(https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png)` }}>
-          <StyledTypography align="center" variant="h4">
-            RAM
-          </StyledTypography>
-        </StyledBox>
-        <StyledBox sx={{ backgroundImage: `url(https://cdn.mos.cms.futurecdn.net/NSYr6nsP63PRbdJFMNL5pT.jpg)` }}>
-          <StyledTypography align="center" variant="h4">
-            SSD
-          </StyledTypography>
-        </StyledBox>
-        <StyledBox sx={{ backgroundImage: `url(https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png)` }}>
-          <StyledTypography align="center" variant="h4">
-            Motherboard
-          </StyledTypography>
-        </StyledBox>
-        <StyledBox sx={{ backgroundImage: `url(https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png)` }}>
-          <StyledTypography align="center" variant="h4">
-            PSU
-          </StyledTypography>
-        </StyledBox>
-        <StyledBox sx={{ backgroundImage: `url(https://cdn.mos.cms.futurecdn.net/NSYr6nsP63PRbdJFMNL5pT.jpg)` }}>
-          <StyledTypography align="center" variant="h4">
-            Monitor
-          </StyledTypography>
-        </StyledBox>
+        {
+          categories.map(category => <CategoryCard key={category.id} category={category}></CategoryCard>)
+        }
       </Stack>
     </Box>
   );

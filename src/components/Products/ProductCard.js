@@ -1,13 +1,11 @@
-import { Description } from '@mui/icons-material';
-import {Box, Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Rating, Stack, Typography } from '@mui/material';
-import Link from 'next/link';
+import {Box, Card, CardActionArea, CardContent, CardMedia, Rating, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 
 const ProductCard = ({product}) => {
-  const {id,name, img, price, rating, category, status,description} = product;
+  const {_id,name, img, price, rating, category, status,description} = product;
   const router = useRouter();
   const handleDetailsPage = ()=> {
-    router.push(`/${id}`)
+    router.push(`/${_id}`)
   }
   return (
     <Card onClick={handleDetailsPage} sx={{maxWidth: '390px', display: 'flex', m:2}}>

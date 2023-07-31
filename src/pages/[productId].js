@@ -6,15 +6,13 @@ import React from 'react';
 
 const ProductDetails = () => {
   const router = useRouter();
-  const {data:product, isLoading, isError, error} = useGetProductQuery(router.query.productId);
-  
+  const {data, isLoading, isError, error} = useGetProductQuery(router.query.productId);
+  const product = data?.data
+
   let content = null;
   if (isLoading) content = <h1>Loading...</h1>
   if (!isLoading && isError) content = <h1>There is an error</h1>;
-  if (!isLoading && !isError && product?.length !== 0) {content = <SingleProduct product={product}></SingleProduct> }
-  // if (!isLoading && !isError && product?.length > 0) { 
-  //   content = <SingleProduct product={product}></SingleProduct> 
-  // }
+  if (!isLoading && !isError && product?.length !== 0) { content = <SingleProduct product={product}></SingleProduct> }
 
   return (
     <div>

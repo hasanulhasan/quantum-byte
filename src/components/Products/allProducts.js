@@ -9,8 +9,8 @@ import { Box } from '@mui/material';
 import ProductCard from './ProductCard';
 
 const AllProducts = () => {
-  const {data:products} = useGetProductsQuery();
-
+  const {data} = useGetProductsQuery();
+  const products =data?.data
   return (
     <div>
     <Box sx={{ '& > :not(style)': { m: 2, mt: 3 }, display: 'flex', justifyContent: 'center' }}>
@@ -40,7 +40,7 @@ const AllProducts = () => {
     </Box>
       <Box sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
         {
-          products?.map(product => <ProductCard key={product.id} product={product}></ProductCard>)
+          products?.map(product => <ProductCard key={product._id} product={product}></ProductCard>)
         }
       </Box>
     </div>

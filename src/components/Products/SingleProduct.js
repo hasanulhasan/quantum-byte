@@ -2,7 +2,7 @@ import { Box, CardMedia, Container, Rating, Stack, Typography } from '@mui/mater
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 const SingleProduct = ({product}) => {
-  const {id,name, img, price, rating, category, status, features, description, reviews} = product;
+  const {_id,name, img, price, rating, category, status, features, description, reviews} = product;
   return (
     <Box>
       <Box
@@ -88,7 +88,7 @@ const SingleProduct = ({product}) => {
                   Features
                 </Typography>
                   {
-                    features.map((feature,index) => <Typography ml={1} key={index}><SouthEastIcon/>{feature}</Typography>)
+                    features?.map((feature,index) => <Typography ml={1} key={index}><SouthEastIcon/>{feature}</Typography>)
                   }
               </Box>
             <Typography
@@ -104,7 +104,7 @@ const SingleProduct = ({product}) => {
                   Reviews
                 </Typography>
                   {
-                    reviews.map((review,index) => <Typography ml={1} key={index}><SouthEastIcon mt={1}></SouthEastIcon>{review}</Typography>)
+                    reviews?.map((review,index) => <Typography ml={1} key={index}><SouthEastIcon mt={1}></SouthEastIcon>{review}</Typography>)
                   }
                 </Box>
           </Box>
