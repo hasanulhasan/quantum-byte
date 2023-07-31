@@ -24,7 +24,6 @@ const SingleProduct = ({product}) => {
         </Typography>
       </Box>
       <Container>
-        <hr />
         <Stack
           direction={{ xs: "column", md: "row" }}
           spacing={{ xs: 1, sm: 2, md: 8 }}

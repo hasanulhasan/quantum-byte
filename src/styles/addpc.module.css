@@ -1,0 +1,18 @@
+.table{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  height: 90vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .table {
+   margin-left: 5%;
+   margin-right: 5%;
+   width: 100%;
+  }
+}
