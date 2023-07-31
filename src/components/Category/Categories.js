@@ -34,28 +34,30 @@ const categories = [
   {
     id: 3,
     ct_name: 'SSD',
-    img: 'https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png'
+    img: 'https://f.hubspotusercontent40.net/hubfs/4650993/New_Avast_Academy/What%20is%20SSD/Academy-What-is-an-SSD-Thumb-a1.jpg'
   },
   {
     id: 4,
     ct_name: 'Motherboard',
-    img: 'https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png'
+    img: 'https://pimages.toolbox.com/wp-content/uploads/2023/02/10044719/Picture-of-a-motherboard.jpg'
   },
   {
     id: 5,
     ct_name: 'Monitor',
-    img: 'https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png'
+    img: 'https://media.wired.com/photos/62f691dc9a81878b183eb0c3/4:3/w_2400,h_1800,c_limit/Best-Monitors-Top-Gear.jpg'
   },
   {
     id: 6,
     ct_name: 'PSU',
-    img: 'https://www.gigabyte.com/FileUpload/global/Insight/Article/198/o202208011125048397.png'
+    img: 'https://www.technewstoday.com/wp-content/uploads/2023/05/Best-500W-PSU-1.jpg'
   },
 ]
 
 const Categories = () => {
   return (
-    <Box sx={{ mx: 5, mt: 3 }}>
+    <div>
+      <Typography variant="h2" my={5} sx={{textAlign: 'center'}}>Featured Product</Typography>
+      <Box sx={{ mx: 5, mt: 3 }}>
       <Stack
         direction={{ xs: "column", sm: "row" }}
         spacing={{ xs: 1, sm: 2, md: 2 }}
@@ -67,6 +69,7 @@ const Categories = () => {
         }
       </Stack>
     </Box>
+    </div>
   );
 };
 

@@ -1,13 +1,14 @@
 import { Box, CardMedia, Container, Rating, Stack, Typography } from '@mui/material';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
+import RelatedProducts from '../RelatedProducts/RelatedProducts';
 const SingleProduct = ({product}) => {
   const {_id,name, img, price, rating, category, status, features, description, reviews} = product;
   return (
     <Box>
       <Box
         sx={{
-          backgroundImage: `url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/42e89993546277.5ed6ae8979655.png)`,
+          backgroundImage: `url(https://img.freepik.com/free-photo/keyboard-blank-cards-coffee-cup-office-supplies-desk_23-2148041993.jpg?w=1380&t=st=1690784462~exp=1690785062~hmac=f13a4b33b2b6c87e4618466e998b1ba5908227431220ffb83a3724948d4954ad)`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           height: "250px",
@@ -30,17 +31,6 @@ const SingleProduct = ({product}) => {
           mt={8}
         >
           <Box flex={3} sx={{ padding: "18px 100px 100px 100px" }}>
-            {/* <Typography
-              m={4}
-              align="center"
-              color={"gray"}
-              variant="body1"
-              sx={{ fontWeight: 900 }}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut
-              laudantium voluptates quaerat, excepturi soluta quos repudiandae
-              consequuntur? 
-            </Typography> */}
             <CardMedia
               component="img"
               height="400px"
@@ -110,7 +100,7 @@ const SingleProduct = ({product}) => {
           </Box>
 
           <Box flex={1}>
-           
+           <RelatedProducts category={category} id={_id}></RelatedProducts>
           </Box>
         </Stack>
       </Container>

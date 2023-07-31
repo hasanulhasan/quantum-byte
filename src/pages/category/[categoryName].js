@@ -21,7 +21,7 @@ const CategoryPage = () => {
     <div>
       <Box
         sx={{
-          backgroundImage: `url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/42e89993546277.5ed6ae8979655.png)`,
+          backgroundImage: `url(https://fixpointqatar.com/img/accessories_banner.jpg)`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           height: "250px",
@@ -29,11 +29,11 @@ const CategoryPage = () => {
       >
         <Typography
           align="center"
-          color={"black"}
+          color={"green"}
           variant="h2"
           sx={{ fontWeight: 900, padding: 10 }}
         >
-          choose your favorite {router.query.categoryName}
+          Choose your favorite {router.query.categoryName}
         </Typography>
       </Box>
       {
