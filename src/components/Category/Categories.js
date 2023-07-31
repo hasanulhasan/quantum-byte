@@ -1,7 +1,4 @@
 import React from "react";
-import kidsImage from "../../assets/processor.png";
-import womenImage from "../../assets/ram.jpg";
-import menImage from "../../assets/ssd.jpg";
 import { Box, Divider, Stack, styled, Typography } from "@mui/material";
 import CategoryCard from "./CategoryCard";
 

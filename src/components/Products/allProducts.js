@@ -4,13 +4,11 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useGetProductsQuery } from '@/redux/api/apiSlice';
 import { Box } from '@mui/material';
 import ProductCard from './ProductCard';
 
-const AllProducts = () => {
-  const {data} = useGetProductsQuery();
-  const products =data?.data
+const AllProducts = ({products}) => {
+  
   return (
     <div>
     <Box sx={{ '& > :not(style)': { m: 2, mt: 3 }, display: 'flex', justifyContent: 'center' }}>

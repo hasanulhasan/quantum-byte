@@ -102,6 +102,7 @@ const SingleProduct = ({product}) => {
           <Box flex={1}>
            <RelatedProducts category={category} id={_id}></RelatedProducts>
           </Box>
+          
         </Stack>
       </Container>
     </Box>

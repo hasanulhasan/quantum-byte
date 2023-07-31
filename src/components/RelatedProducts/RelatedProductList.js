@@ -1,10 +1,18 @@
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 const RelatedProductList = ({relatedProduct}) => {
-  const {name, img, price} = relatedProduct;
+  const {_id,name, img, price} = relatedProduct;
+  const router = useRouter();
+
+  const handleGoDetailsPage = ()=> {
+    router.push(`/${_id}`)
+  }
+
   return (
-    <ListItem alignItems="flex-end">
+    <ListItem sx={{cursor: 'pointer'}} onClick={handleGoDetailsPage} alignItems="flex-end">
           <ListItemAvatar>
             <Avatar
               sx={{ height: 80, width: 80 }}
@@ -17,7 +25,7 @@ const RelatedProductList = ({relatedProduct}) => {
             primary={`${name}`}
             secondary={`Price $${price}`}
           />
-        </ListItem>
+    </ListItem>
   );
 };
 
