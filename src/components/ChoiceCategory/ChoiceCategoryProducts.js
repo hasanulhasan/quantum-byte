@@ -7,12 +7,12 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import SingleChoiceProduct from './SingleChoiceProduct';
 
-import styles from '../../styles/addpc.module.css'
+import styles from '../../styles/choiceCategory.module.css'
 
 const ChoiceCategoryProducts = ({products}) => {
 
   return (
-    <div className={styles.table}>
+    <div className={styles.choiceTable}>
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
