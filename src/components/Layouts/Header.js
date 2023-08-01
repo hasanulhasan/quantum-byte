@@ -1,12 +1,33 @@
-import { AppBar, Box, Button, Divider, Drawer, FormControl, IconButton, InputLabel, MenuItem, Select, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Divider, Drawer, FormControl, IconButton, InputLabel, Menu, MenuItem, Select, Toolbar, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 // import Logo from '../../images/logo.svg'
 import styles from './../../styles/header.module.css'
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import { useRouter } from 'next/router';
 
 const Header = () => {
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [categoryEl, setCategoryEl] = useState(null);
+
+  const handleRoute = (route)=> {
+    router.push(`/category/${route}`)
+  }
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCategory = (event) => {
+    setCategoryEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setCategoryEl(null)
+  };
+
   //menu drawer
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -25,15 +46,12 @@ const Header = () => {
       <ul className={styles.mobileNavigation}>
         <li><Link href='/'>Home</Link></li>
         <li><Link href='/about'>About</Link></li>
-        <li><Link href='/contact'>Contact</Link></li>
       </ul>
     </Box>
   )
   return (
     <>
-      <Box sx={{
-                // marginBottom: 2
-              }}>
+      <Box>
         <AppBar component={'nav'} sx={{ bgcolor: 'black' }}>
           <Toolbar>
             <IconButton
@@ -51,7 +69,7 @@ const Header = () => {
               color={'goldenrod'}
               variant='h5'
               component={'div'}
-              sx={{ flexGrow: 1, fontWeight: 'bold'  }}
+              sx={{ flexGrow: 1, fontWeight: 'bold', cursor: 'pointer'  }}
             >
               Quantum Byte
             </Typography>
@@ -59,28 +77,65 @@ const Header = () => {
               <ul className={styles.navigationMenu}>
                 <li><Link href='/'>Home</Link></li>
                 <li><Link href='/about'>About</Link></li>
-                <li><Link href='/contact'>Contact</Link></li>
-                <li><Link href='/addpc'><Button variant='contained' color='success'>Add PC</Button></Link></li>
-                <li><Box sx={{ minWidth: 120, bgcolor: '#6D6765', color: 'success' }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Category</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value='Category'
-          label="Age"
-          // onChange={handleChange}
-        >
-          <MenuItem value={10}>Motherboard</MenuItem>
-          <MenuItem value={20}>Processor</MenuItem>
-          <MenuItem value={30}>RAM</MenuItem>
-          <MenuItem value={30}>PSU</MenuItem>
-          <MenuItem value={30}>SSD</MenuItem>
-          <MenuItem value={30}>Monitor</MenuItem>
-          <MenuItem value={30}>Others</MenuItem>
-        </Select>
-      </FormControl>
-    </Box></li>
+                <li>
+              <p aria-controls="category" aria-haspopup="true" onClick={handleCategory}>Category</p>
+              <Menu
+                id="category"
+                anchorEl={categoryEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(categoryEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={()=> handleRoute('Processor')}>Processor</MenuItem>
+                <MenuItem onClick={()=> handleRoute('Motherboard')}>Motherboard</MenuItem>
+                <MenuItem onClick={()=> handleRoute('Monitor')}>Monitor</MenuItem>
+                <MenuItem onClick={()=> handleRoute('RAM')}>RAM</MenuItem>
+                <MenuItem onClick={()=> handleRoute('SSD')}>SSD</MenuItem>
+                <MenuItem onClick={()=> handleRoute('PSU')}>PSU</MenuItem>
+              </Menu>
+            {/* </div> */}
+                </li>
+    <li>
+      <div>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+              </Menu>
+            </div>
+            </li>
+            <li><Link href='/addpc'><Button variant='contained' color='success'>Add PC</Button></Link></li>
               </ul>
               
             </Box>

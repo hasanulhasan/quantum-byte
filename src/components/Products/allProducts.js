@@ -11,7 +11,7 @@ const AllProducts = ({products}) => {
   
   return (
     <div>
-    <Box sx={{ '& > :not(style)': { m: 2, mt: 3 }, display: 'flex', justifyContent: 'center' }}>
+    {/* <Box sx={{ '& > :not(style)': { m: 2, mt: 3 }, display: 'flex', justifyContent: 'center' }}>
       <Box sx={{ display: 'flex', alignItems: 'flex-end'}}>
         <SearchIcon sx={{ color: 'action.active', m: 1, my: 0.5 }} />
         <TextField id="input-with-sx" label="search book" variant="standard" />
@@ -35,7 +35,7 @@ const AllProducts = ({products}) => {
         </Select>
          </FormControl>
       </Box>
-    </Box>
+    </Box> */}
       <Box sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
         {
           products?.map(product => <ProductCard key={product._id} product={product}></ProductCard>)
