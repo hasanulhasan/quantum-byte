@@ -7,11 +7,11 @@ import { useDispatch} from 'react-redux';
 const SingleChoiceProduct = ({product}) => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const {_id,name, img, price, rating, category, status, features, description, reviews} = product;
+  const {_id,name,price, rating,status} = product;
 
   const handleAddToChoice = ()=> {
     dispatch(addProduct(product))
-      router.push('/addpc')
+    router.push('/addpc')
   }
 
   return (

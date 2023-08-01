@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 
 const AddPc = () => {
   const {processor,monitor, motherboard, ram, ssd, psu} = useSelector(state => state.productChoice)
-  console.log(processor.name)
   const router = useRouter();
   
   const handleChoicePageRoute = (category) => {

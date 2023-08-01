@@ -1,12 +1,12 @@
 const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
-  processor: [],
-  monitor: [],
-  motherboard: [],
-  ram: [],
-  ssd: [],
-  psu: []
+  processor: '',
+  monitor: '',
+  motherboard: '',
+  ram: '',
+  ssd: '',
+  psu: ''
 }
 
 const productChoiceSlice = createSlice({

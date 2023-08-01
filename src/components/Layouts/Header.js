@@ -14,7 +14,10 @@ const Header = () => {
   const [categoryEl, setCategoryEl] = useState(null);
 
   const handleRoute = (route)=> {
-    router.push(`/category/${route}`)
+    router.push(`/category/${route}`).then(value => {
+      console.log(value)
+      if(value){ setCategoryEl(null) }
+    })
   }
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -77,6 +80,8 @@ const Header = () => {
               <ul className={styles.navigationMenu}>
                 <li><Link href='/'>Home</Link></li>
                 <li><Link href='/about'>About</Link></li>
+                <li><Link href='/login'>Login</Link></li>
+                <li><Link href='/signup'>Signup</Link></li>
                 <li>
               <p aria-controls="category" aria-haspopup="true" onClick={handleCategory}>Category</p>
               <Menu
