@@ -6,7 +6,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import SingleChoiceProduct from './SingleChoiceProduct';
-
 import styles from '../../styles/choiceCategory.module.css'
 
 const ChoiceCategoryProducts = ({products}) => {
@@ -17,10 +16,12 @@ const ChoiceCategoryProducts = ({products}) => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell>Image</TableCell>
             <TableCell>Product Name</TableCell>
             <TableCell>Price</TableCell>
             <TableCell>Rating</TableCell>
             <TableCell>Status</TableCell>
+            <TableCell>Category</TableCell>
             <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>

@@ -1,14 +1,18 @@
-import { AppBar, Box, Button, Divider, Drawer, FormControl, IconButton, InputLabel, Menu, MenuItem, Select, Toolbar, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import { AppBar, Box, Button, Divider, Drawer, IconButton,Menu, MenuItem, Toolbar, Typography } from '@mui/material';
+import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
-// import Logo from '../../images/logo.svg'
 import styles from './../../styles/header.module.css'
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { useRouter } from 'next/router';
+import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
+import { auth } from '@/utils/firebase';
 
 const Header = () => {
   const router = useRouter();
+  const [user, loading] = useAuthState(auth);
+  const [signOut, error] = useSignOut(auth);
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [categoryEl, setCategoryEl] = useState(null);
@@ -80,8 +84,6 @@ const Header = () => {
               <ul className={styles.navigationMenu}>
                 <li><Link href='/'>Home</Link></li>
                 <li><Link href='/about'>About</Link></li>
-                <li><Link href='/login'>Login</Link></li>
-                <li><Link href='/signup'>Signup</Link></li>
                 <li>
               <p aria-controls="category" aria-haspopup="true" onClick={handleCategory}>Category</p>
               <Menu
@@ -108,7 +110,9 @@ const Header = () => {
               </Menu>
             {/* </div> */}
                 </li>
-    <li>
+            {
+              user?.email? <>
+              <li>
       <div>
               <IconButton
                 size="large"
@@ -136,11 +140,17 @@ const Header = () => {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>ADD Component</MenuItem>
+                <MenuItem onClick={()=> {signOut().then(data=> {if(data){ handleClose()}})}}>Logout</MenuItem>
               </Menu>
             </div>
             </li>
             <li><Link href='/addpc'><Button variant='contained' color='success'>Add PC</Button></Link></li>
+              </> : 
+              <>
+                <li><Link href='/login'><Button variant='contained' color='success'>Login</Button></Link></li>
+              </>
+            }
               </ul>
               
             </Box>

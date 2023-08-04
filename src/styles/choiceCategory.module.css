@@ -6,7 +6,7 @@
   width: 50%;
   margin-left: 25%;
   margin-right: 25%;
-  height: 50vh;
+  min-height: 50vh;
   margin-top: 15px;
 }
 

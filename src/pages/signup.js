@@ -4,29 +4,31 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Copyright } from '@mui/icons-material';
+import GoogleIcon from '@mui/icons-material/Google';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import MainLayout from '@/components/Layouts/MainLayout';
+import { Divider, Grid } from '@mui/material';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import { signIn } from 'next-auth/react';
+import {auth} from '../utils/firebase'
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 const Signup = () => {
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const [signInWithEmailAndPassword,user,loading,error] = useCreateUserWithEmailAndPassword(auth);
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    signInWithEmailAndPassword(data.get('email'), data.get('password'))
   };
 
   return (
-    <div style={{height: '70vh'}}>
-      <Container component="main" maxWidth="xs">
+    <div style={{height: '70vh', marginLeft: '15px', marginRight: '15px'}}>
+      <Container component="main" maxWidth="xs" sx={{ border: 1, marginTop: '25px', borderRadius: '10px'}}>
         <CssBaseline />
         <Box
           sx={{
@@ -73,20 +75,26 @@ const Signup = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Sign Up
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
+            <Box sx={{textAlign: 'center', fontSize: '22px'}} p={2}>
+              Or Login with
+            <Grid container mt={2}>
+      <Grid item xs>
+      <GoogleIcon sx={{ width: 46, height: 46 }}/>
+      </Grid>
+      <Divider orientation="vertical" flexItem>
+      </Divider>
+      <Grid item xs>
+      <GitHubIcon onClick={()=> signIn("github")} sx={{cursor: 'pointer', width: 46, height: 46 }}/>
+      </Grid>
+      <Divider orientation="vertical" flexItem>
+      </Divider>
+      <Grid item xs>
+      <TwitterIcon sx={{ width: 46, height: 46 }}/>
+      </Grid>
+    </Grid>
+            </Box>
           </Box>
         </Box>
       </Container>
