@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Divider, Drawer, IconButton,Menu, MenuItem, Toolbar, Typography } from '@mui/material';
+import { AppBar, Avatar, Box, Button, Divider, Drawer, IconButton,Menu, MenuItem, Toolbar, Typography } from '@mui/material';
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
@@ -122,7 +122,7 @@ const Header = () => {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <Avatar alt="user avatar" src={`https://ui-avatars.com/api/bold=true?name=${user?.email}`} />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -140,7 +140,7 @@ const Header = () => {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>ADD Component</MenuItem>
+                <MenuItem onClick={()=> {router.push('/addComponent').then(data=> {if(data){ handleClose()}})}}>ADD Component</MenuItem>
                 <MenuItem onClick={()=> {signOut().then(data=> {if(data){ handleClose()}})}}>Logout</MenuItem>
               </Menu>
             </div>

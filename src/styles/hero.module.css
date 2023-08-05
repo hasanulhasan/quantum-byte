@@ -1,3 +1,7 @@
+.heroImg{
+  background-image: url('/src/assets/banner.jpeg');
+}
+
 .home {
   height: 90vh;
   display: flex;
