@@ -4,6 +4,8 @@ import SouthEastIcon from '@mui/icons-material/SouthEast';
 import RelatedProducts from '../RelatedProducts/RelatedProducts';
 import { useDeleteProductMutation } from '@/redux/api/apiSlice';
 import { useRouter } from 'next/router';
+import toast, { Toaster } from 'react-hot-toast';
+
 const SingleProduct = ({product}) => {
   const router = useRouter();
   const [deleteProduct] = useDeleteProductMutation();
@@ -13,8 +15,10 @@ const SingleProduct = ({product}) => {
     if(confirm('Are sure to delete?') === true){
       deleteProduct(id).then(data=> {
         if(data){ 
-          router.push('/')
-          alert('Delete Successful')
+          toast.success('Product Deleted')
+          setTimeout(() => {
+            router.push('/')
+          }, 800);
         }
       }).catch(err=> console.log(err))
     }
@@ -104,12 +108,14 @@ const SingleProduct = ({product}) => {
               variant="body1"
               sx={{ fontWeight: 900 }}
             >
-              {description}
+              Description: {description}
             </Typography>
             <Box sx={{mx: 4, mt:1}}>
-                <Typography variant='h6' gutterBottom component={'div'}>
+                {
+                  reviews.length !== 0  && <Typography variant='h6' gutterBottom component={'div'}>
                   Reviews
                 </Typography>
+                }
                   {
                     reviews?.map((review,index) => <Typography ml={1} key={index}><SouthEastIcon mt={1}></SouthEastIcon>{review}</Typography>)
                   }
@@ -126,6 +132,7 @@ const SingleProduct = ({product}) => {
           
         </Stack>
       </Container>
+      <Toaster position="top-right"/>
     </Box>
   );
 };

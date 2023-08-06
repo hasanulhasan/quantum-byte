@@ -1,4 +1,3 @@
-import CategoryProducts from '@/components/Category/CategoryProducts';
 import ChoiceCategoryProducts from '@/components/ChoiceCategory/ChoiceCategoryProducts';
 import MainLayout from '@/components/Layouts/MainLayout';
 import { useGetCategoryProductsQuery } from '@/redux/api/apiSlice';
@@ -33,7 +32,7 @@ const ChoiceCategory = () => {
           variant="h2"
           sx={{ fontWeight: 900, padding: 10 }}
         >
-          Choose your favorite {router.query.choiceCt}
+          {router.query.choiceCt} Collection
         </Typography>
       </Box>
       {

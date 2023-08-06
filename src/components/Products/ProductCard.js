@@ -54,7 +54,7 @@ const ProductCard = ({product}) => {
                 </Box>
                 <Box>
                 <Typography variant='body2' gutterBottom component={'div'}>
-                  Price : {price}
+                  Price : {price}&#2547;
                 </Typography>
                 <Typography variant='body2' gutterBottom component={'div'}>
                    {status? 

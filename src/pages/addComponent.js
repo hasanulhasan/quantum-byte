@@ -5,11 +5,12 @@ import Button from '@mui/material/Button';
 import { Box, Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import * as React from 'react';
 import { useAddProductMutation } from '@/redux/api/apiSlice';
-
-
-
+import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/router';
 
 const AddComponent = () => {
+  const router = useRouter();
   const [addProduct] = useAddProductMutation();
   const [status, setStatus] = useState(true);
 
@@ -27,9 +28,14 @@ const AddComponent = () => {
       features: [data.get('feature-1'),data.get('feature-2')],
       reviews: []
     }
-    console.log(product)
     try {
-      addProduct(product).then(data=> {if(data){alert('Product added')}})
+      addProduct(product).then(data=> {if(data){
+        toast.success('Product added')
+        e.target.reset()
+        setTimeout(() => {
+          router.push(`/`)
+        }, 800);
+      }})
     } catch (error) {
       console.log(error)
     }
@@ -57,14 +63,23 @@ const AddComponent = () => {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="category"
-            name="category"
-            label="Category name"
-            fullWidth
-            variant="standard"
-          />
+        <FormControl variant="standard" fullWidth>
+        <InputLabel id="demo-simple-select-standard-label">Category</InputLabel>
+        <Select
+          required
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          name='category'
+          label="Category"
+        >
+          <MenuItem value='Processor'>Processor</MenuItem>
+          <MenuItem value='Motherboard'>Motherboard</MenuItem>
+          <MenuItem value='Monitor'>Monitor</MenuItem>
+          <MenuItem value='RAM'>RAM</MenuItem>
+          <MenuItem value='SSD'>SSD</MenuItem>
+          <MenuItem value='PSU'>PSU</MenuItem>
+        </Select>
+      </FormControl>
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -147,6 +162,7 @@ const AddComponent = () => {
         <Button type='submit' fullWidth variant="contained" sx={{ mt: 3}}>Submit</Button>
           </Box>
         </Paper>
+        <Toaster position="top-right"/>
       </Container>
   );
 };

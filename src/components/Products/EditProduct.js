@@ -6,6 +6,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useEditProductMutation } from '@/redux/api/apiSlice';
 import { useRouter } from 'next/router';
+import toast, { Toaster } from 'react-hot-toast';
 
 const EditProduct = ({product}) => {
   const router = useRouter();
@@ -30,8 +31,11 @@ const EditProduct = ({product}) => {
 
     try {
       editProduct({id:_id, data: newProduct})
-        alert('Product Edited')
-        router.push(`/${_id}`)
+        toast.success('Product edited')
+        e.target.reset()
+        setTimeout(() => {
+          router.push(`/${_id}`)
+        }, 800);
     } catch (error) {
       console.log(error)
     }
@@ -61,14 +65,13 @@ const EditProduct = ({product}) => {
         </Grid>
         <Grid item xs={12} sm={6}>
         <FormControl variant="standard" fullWidth>
-        <InputLabel id="demo-simple-select-standard-label">Rating</InputLabel>
+        <InputLabel id="demo-simple-select-standard-label">Category</InputLabel>
         <Select
           required
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
           name='category'
           defaultValue={category}
-          // onChange={handleChange}
           label="Category"
         >
           <MenuItem value='Processor'>Processor</MenuItem>
@@ -167,6 +170,7 @@ const EditProduct = ({product}) => {
         <Button type='submit' fullWidth variant="contained" sx={{ mt: 3}}>Submit</Button>
           </Box>
         </Paper>
+        <Toaster position="top-right"/>
       </Container>
   );
 };
