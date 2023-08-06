@@ -1,17 +1,17 @@
-import MainLayout from '@/components/Layouts/MainLayout';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import { Box, Checkbox, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import * as React from 'react';
-import { useAddProductMutation } from '@/redux/api/apiSlice';
+import { useState } from 'react';
+import { useEditProductMutation } from '@/redux/api/apiSlice';
+import { useRouter } from 'next/router';
 
-
-
-
-const AddComponent = () => {
-  const [addProduct] = useAddProductMutation();
-  const [status, setStatus] = useState(true);
+const EditProduct = ({product}) => {
+  const router = useRouter();
+  const {_id,name, img, price, rating, category, status:initialStatus, features, description, reviews} = product;
+  const [editProduct] = useEditProductMutation();
+  const [status, setStatus] = useState(initialStatus);
 
   const handleSubmit = (e)=> {
     e.preventDefault();
@@ -25,25 +25,28 @@ const AddComponent = () => {
       status: status,
       description: data.get('description'),
       features: [data.get('feature-1'),data.get('feature-2')],
-      reviews: []
+      reviews: reviews
     }
     console.log(product)
+    
     try {
-      addProduct(product).then(data=> {if(data){alert('Product added')}})
+      editProduct(_id, product)
+        alert('Product Edited')
+        router.push(`/${_id}`)
     } catch (error) {
       console.log(error)
     }
   }
 
   return (
-      <Container component="main" maxWidth="sm" sx={{mb:6}}>
+    <Container component="main" maxWidth="sm" sx={{mb:6}}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" align="center">
-            Add Component
+            Edit
           </Typography>
           <Box component="form" onSubmit={handleSubmit}>
       <Typography variant="h6" gutterBottom>
-        Be sure about your information
+        {name}
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
@@ -54,17 +57,29 @@ const AddComponent = () => {
             label="Name"
             fullWidth
             variant="standard"
+            defaultValue={name}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="category"
-            name="category"
-            label="Category name"
-            fullWidth
-            variant="standard"
-          />
+        <FormControl variant="standard" fullWidth>
+        <InputLabel id="demo-simple-select-standard-label">Rating</InputLabel>
+        <Select
+          required
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          name='category'
+          defaultValue={category}
+          // onChange={handleChange}
+          label="Category"
+        >
+          <MenuItem value='Processor'>Processor</MenuItem>
+          <MenuItem value='Motherboard'>Motherboard</MenuItem>
+          <MenuItem value='Monitor'>Monitor</MenuItem>
+          <MenuItem value='RAM'>RAM</MenuItem>
+          <MenuItem value='SSD'>SSD</MenuItem>
+          <MenuItem value='PSU'>PSU</MenuItem>
+        </Select>
+      </FormControl>
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -74,6 +89,7 @@ const AddComponent = () => {
             label="Photo URL"
             fullWidth
             variant="standard"
+            defaultValue={img}
           />
         </Grid>
         
@@ -85,6 +101,7 @@ const AddComponent = () => {
             label="Price"
             fullWidth
             variant="standard"
+            defaultValue={price}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -95,7 +112,7 @@ const AddComponent = () => {
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
           name='rating'
-          // value='age'
+          defaultValue={rating}
           // onChange={handleChange}
           label="Rating"
         >
@@ -112,9 +129,10 @@ const AddComponent = () => {
             id="description"
             name="description"
             label="Description"
-            multiline
             fullWidth
+            multiline
             variant="standard"
+            defaultValue={description}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -125,6 +143,7 @@ const AddComponent = () => {
             label="Feature-1"
             fullWidth
             variant="standard"
+            defaultValue={features[0]}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -135,11 +154,13 @@ const AddComponent = () => {
             label="Feature-2"
             fullWidth
             variant="standard"
+            defaultValue={features[1]}
           />
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox onChange={()=> setStatus(!status)} color="secondary" name="stockStatus" checked={status}  />}
+            control={<Checkbox onChange={()=> setStatus(!status)} color="secondary" name="stockStatus" checked={status} />}
+            checked={status}
             label="In Stock"
           />
         </Grid>
@@ -151,7 +172,4 @@ const AddComponent = () => {
   );
 };
 
-export default AddComponent;
-AddComponent.getLayout = function getLayout(page){
-  return <MainLayout>{page}</MainLayout>
-}
+export default EditProduct;

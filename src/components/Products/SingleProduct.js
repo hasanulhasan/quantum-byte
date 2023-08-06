@@ -18,7 +18,9 @@ const SingleProduct = ({product}) => {
         }
       }).catch(err=> console.log(err))
     }
-      
+  }
+  const editHandle = ()=> {
+    router.push(`/edit/${_id}`)
   }
   return (
     <Box>
@@ -114,7 +116,7 @@ const SingleProduct = ({product}) => {
             </Box>
             <Box sx={{mx: 4, mt:1}}>
                     <Button onClick={()=> deleteHandle(_id)} sx={{mt:1}} variant='contained' color='warning' size="small">Delete</Button> 
-                    <Button sx={{mt:1,ml:1}} variant='contained' color='primary' size="small" >Edit</Button>
+                    <Button onClick={()=> editHandle(_id)} sx={{mt:1,ml:1}} variant='contained' color='primary' size="small" >Edit</Button>
             </Box>
           </Box>
 
