@@ -1,9 +1,25 @@
-import { Box, CardMedia, Container, Rating, Stack, Typography } from '@mui/material';
+import { Box, Button, CardMedia, Container, Rating, Stack, Typography } from '@mui/material';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 import RelatedProducts from '../RelatedProducts/RelatedProducts';
+import { useDeleteProductMutation } from '@/redux/api/apiSlice';
+import { useRouter } from 'next/router';
 const SingleProduct = ({product}) => {
+  const router = useRouter();
+  const [deleteProduct] = useDeleteProductMutation();
   const {_id,name, img, price, rating, category, status, features, description, reviews} = product;
+
+  const deleteHandle = (id)=> {
+    if(confirm('Are sure to delete?') === true){
+      deleteProduct(id).then(data=> {
+        if(data){ 
+          router.push('/')
+          alert('Delete Successful')
+        }
+      }).catch(err=> console.log(err))
+    }
+      
+  }
   return (
     <Box>
       <Box
@@ -95,7 +111,11 @@ const SingleProduct = ({product}) => {
                   {
                     reviews?.map((review,index) => <Typography ml={1} key={index}><SouthEastIcon mt={1}></SouthEastIcon>{review}</Typography>)
                   }
-                </Box>
+            </Box>
+            <Box sx={{mx: 4, mt:1}}>
+                    <Button onClick={()=> deleteHandle(_id)} sx={{mt:1}} variant='contained' color='warning' size="small">Delete</Button> 
+                    <Button sx={{mt:1,ml:1}} variant='contained' color='primary' size="small" >Edit</Button>
+            </Box>
           </Box>
 
           <Box flex={1}>

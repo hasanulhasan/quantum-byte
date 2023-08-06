@@ -17,10 +17,16 @@ export const apiSlice = createApi({
         body: data
       }),
     }),
+    deleteProduct: builder.mutation({
+      query: (id) => ({
+        url: `/products/${id}`,
+        method: 'DELETE'
+      }),
+    }),
     getCategoryProducts: builder.query({
       query: (category) => `/products/category/${category}`,
     }),
   }),
 })
 
-export const { useGetProductsQuery,useGetProductQuery,useGetCategoryProductsQuery, useAddProductMutation} = apiSlice
+export const { useGetProductsQuery,useGetProductQuery,useGetCategoryProductsQuery, useAddProductMutation, useDeleteProductMutation} = apiSlice
