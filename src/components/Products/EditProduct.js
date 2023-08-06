@@ -9,14 +9,14 @@ import { useRouter } from 'next/router';
 
 const EditProduct = ({product}) => {
   const router = useRouter();
-  const {_id,name, img, price, rating, category, status:initialStatus, features, description, reviews} = product;
+  const {_id, name, img, price, rating, category, status:initialStatus, features, description, reviews} = product;
   const [editProduct] = useEditProductMutation();
   const [status, setStatus] = useState(initialStatus);
 
-  const handleSubmit = (e)=> {
+  const handleSubmit = async (e)=> {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const product = {
+    const newProduct = {
       name: data.get('name'),
       img: data.get('img'),
       price: data.get('price'),
@@ -27,10 +27,9 @@ const EditProduct = ({product}) => {
       features: [data.get('feature-1'),data.get('feature-2')],
       reviews: reviews
     }
-    console.log(product)
-    
+
     try {
-      editProduct(_id, product)
+      editProduct({id:_id, data: newProduct})
         alert('Product Edited')
         router.push(`/${_id}`)
     } catch (error) {

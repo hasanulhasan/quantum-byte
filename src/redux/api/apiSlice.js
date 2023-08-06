@@ -29,7 +29,7 @@ export const apiSlice = createApi({
       invalidatesTags: ['Products','Product'],
     }),
     editProduct: builder.mutation({
-      query: (id, data) => ({
+      query: ({id, data}) => ({
         url: `/products/${id}`,
         method: 'PATCH',
         body: data

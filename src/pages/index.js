@@ -13,7 +13,7 @@ export default function Home({products}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href='/logo.png' />
       </Head>
-      <Hero/>
+      {/* <Hero/> */}
       <AllProducts products={products}/>
       <Categories/>
     </>
