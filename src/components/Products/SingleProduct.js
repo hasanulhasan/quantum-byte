@@ -1,5 +1,4 @@
 import { Box, Button, CardMedia, Container, Rating, Stack, Typography } from '@mui/material';
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 import RelatedProducts from '../RelatedProducts/RelatedProducts';
 import { useDeleteProductMutation } from '@/redux/api/apiSlice';
@@ -40,27 +39,38 @@ const SingleProduct = ({product}) => {
           align="center"
           color={"black"}
           variant="h2"
-          sx={{ fontWeight: 900, padding: 10 }}
+          sx={{ fontWeight: 900, py: 10 }}
         >
           {name}
         </Typography>
       </Box>
+      
       <Container>
         <Stack
           direction={{ xs: "column", md: "row" }}
           spacing={{ xs: 1, sm: 2, md: 8 }}
           mt={8}
         >
-          <Box flex={3} sx={{ padding: "18px 100px 100px 100px" }}>
-            <CardMedia
-              component="img"
-              height="400px"
-              image={img}
-              alt="green iguana"
-            />
+          <Box>
+          <Box sx={{ 
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignContent: 'center',
+                        alignItems: 'center'
+                      }}>
+                <CardMedia
+                  sx={{ 
+                     minHeight: '500px',
+                     maxWidth: '550px',
+                      }}
+                  component='img'
+                  src={img}
+                  alt='product' />
+                </Box>
             <Typography align="center" variant="h4" mt={2}>
               {name}
             </Typography>
+            
             <Box sx={{ 
                         display: 'flex',
                         justifyContent: 'space-between',
@@ -70,8 +80,13 @@ const SingleProduct = ({product}) => {
                         mt:2
                       }}>
                 <Box>
-                <Typography variant='h6' gutterBottom component={'div'}>
-                  Category: {category}
+                <Typography sx={{
+                 background: 'rgba(76, 175, 80, 0.4)',
+                 textAlign: 'center',
+                 borderRadius: '12px'
+                }} 
+                 variant='h6' gutterBottom component={'div'}>
+                  {category}
                 </Typography>
                 <Stack spacing={1}>
                   <Rating name="size-small" defaultValue={Number(rating)} precision={0.5} readOnly />
@@ -79,7 +94,7 @@ const SingleProduct = ({product}) => {
                 </Box>
                 <Box>
                 <Typography variant='h6' gutterBottom component={'div'}>
-                  Price : {price}
+                  Price : {price}&#2547;
                 </Typography>
                 <Typography variant='h6' gutterBottom component={'div'}>
                    {status? 
@@ -106,7 +121,7 @@ const SingleProduct = ({product}) => {
               m={4}
               color={"gray"}
               variant="body1"
-              sx={{ fontWeight: 900 }}
+              sx={{ fontWeight: 900 , textAlign: 'justify'}}
             >
               Description: {description}
             </Typography>
@@ -121,8 +136,8 @@ const SingleProduct = ({product}) => {
                   }
             </Box>
             <Box sx={{mx: 4, mt:1}}>
-                    <Button onClick={()=> deleteHandle(_id)} sx={{mt:1}} variant='contained' color='warning' size="small">Delete</Button> 
-                    <Button onClick={()=> editHandle(_id)} sx={{mt:1,ml:1}} variant='contained' color='primary' size="small" >Edit</Button>
+                    <Button onClick={()=> deleteHandle(_id)} sx={{mt:1}} variant='contained' color='warning'>Delete</Button> 
+                    <Button onClick={()=> editHandle(_id)} sx={{mt:1,ml:1}} variant='contained' color='primary'>Edit</Button>
             </Box>
           </Box>
 

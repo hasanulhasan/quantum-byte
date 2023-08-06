@@ -3,6 +3,7 @@ import styles from '../styles/addpc.module.css'
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddPc = () => {
   const {processor,monitor, motherboard, ram, ssd, psu} = useSelector(state => state.productChoice)
@@ -13,7 +14,7 @@ const AddPc = () => {
   }
   const handleSubmit = (e)=> {
     e.preventDefault()
-    alert('Success, You have filled up pc building form!')
+    toast.success('You have successfully build your PC')
   }
 
   return (
@@ -84,6 +85,7 @@ const AddPc = () => {
           </form>
 
           </Box>
+          <Toaster/>
     </Container>
     </div>
   );

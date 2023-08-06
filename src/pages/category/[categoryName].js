@@ -7,21 +7,13 @@ import React from 'react';
 
 const CategoryPage = ({products}) => {
   const router = useRouter();
-  // const {data, isLoading, isError, error} = useGetCategoryProductsQuery(router.query.categoryName);
-  // const products = data?.data
-
   let content = null;
-  // if (isLoading) content = <h1>Loading...</h1>
-  // if (!isLoading && isError) content = <h1>There is an error</h1>;
-  // if (!isLoading && !isError && products?.length === 0) { content = <h1>There is no product</h1> }
-  // if (!isLoading && !isError && products?.length > 0) { content = <CategoryProducts products={products}></CategoryProducts> }
   if (products?.length === 0) { content = <h1>There is no product</h1> }
   if (products?.length > 0) { content = <CategoryProducts products={products}></CategoryProducts> }
 
   return (
     <div>
-      <Box
-        sx={{
+      <Box sx={{
           backgroundImage: `url(https://fixpointqatar.com/img/accessories_banner.jpg)`,
           backgroundPosition: "center",
           backgroundSize: "cover",
@@ -30,11 +22,11 @@ const CategoryPage = ({products}) => {
       >
         <Typography
           align="center"
-          color={"#FF5733"}
+          color={"#E74C3C"}
           variant="h2"
-          sx={{ fontWeight: 900, padding: 10 }}
+          sx={{  fontWeight: 900, pt: 5}}
         >
-          Choose your favorite {router.query.categoryName}
+          {router.query.categoryName}
         </Typography>
       </Box>
       {

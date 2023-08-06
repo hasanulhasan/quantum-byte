@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
 const Login = () => {
   const router =useRouter();
   const [signInWithEmailAndPassword,user,loading,error] = useSignInWithEmailAndPassword(auth);
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -25,7 +26,7 @@ const Login = () => {
   };
 
   return (
-    <div style={{height: '70vh'}}>
+    <div style={{height: '70vh', marginLeft: '15px', marginRight: '15px'}}>
       <Container component="main" maxWidth="xs" sx={{ border: 1, marginTop: '25px', borderRadius: '10px'}}>
         <CssBaseline />
         <Box

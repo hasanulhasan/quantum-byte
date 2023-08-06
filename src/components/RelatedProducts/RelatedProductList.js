@@ -1,5 +1,4 @@
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -17,7 +16,7 @@ const RelatedProductList = ({relatedProduct}) => {
             <Avatar
               sx={{ height: 80, width: 80 }}
               variant="square"
-              alt="Remy Sharp"
+              alt="Related Products"
               src={img}
             />
           </ListItemAvatar>

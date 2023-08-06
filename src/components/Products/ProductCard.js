@@ -17,8 +17,9 @@ const ProductCard = ({product}) => {
                         alignItems: 'center'
                       }}>
                 <CardMedia
-                  sx={{ minHeight: '200px',
-                        maxWidth: '250px',
+                  sx={{ 
+                     minHeight: '200px',
+                     maxWidth: '250px',
                       }}
                   component='img'
                   src={img}
@@ -50,7 +51,6 @@ const ProductCard = ({product}) => {
                 <Stack spacing={1}>
                   <Rating name="half-rating-read" defaultValue={Number(rating)} precision={0.5} readOnly />
                 </Stack>
-                {/* <Button sx={{mt:1}} variant='contained' color='warning' size="small">Delete</Button> */}
                 </Box>
                 <Box>
                 <Typography variant='body2' gutterBottom component={'div'}>
@@ -67,7 +67,6 @@ const ProductCard = ({product}) => {
                  </Typography>
                    }
                 </Typography>
-                {/* <Button sx={{mt:1}} variant='contained' color='primary' size="small" >Edit</Button> */}
                 </Box>
               </Box>
               </CardContent>

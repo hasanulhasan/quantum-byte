@@ -1,4 +1,4 @@
-import { Avatar,Box,Divider,List,Typography,} from "@mui/material";
+import { Box,List,Typography,} from "@mui/material";
 import RelatedProductList from "./RelatedProductList";
 import { useGetCategoryProductsQuery } from "@/redux/api/apiSlice";
 
@@ -30,7 +30,6 @@ const RelatedProducts = ({category, id}) => {
         {
           content
         }
-        <Divider variant="inset" component={"li"} />
       </List>
     </Box>
   )
