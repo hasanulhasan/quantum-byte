@@ -34,3 +34,7 @@
   font-size: 1.4rem;
   color: black;
 }
+
+.mobileNavigation li p {
+  font-size: 1.4rem;
+}

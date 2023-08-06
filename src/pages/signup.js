@@ -16,6 +16,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { signIn } from 'next-auth/react';
 import {auth} from '../utils/firebase'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import Link from 'next/link';
 
 const Signup = () => {
   const [signInWithEmailAndPassword,user,loading,error] = useCreateUserWithEmailAndPassword(auth);
@@ -65,10 +66,7 @@ const Signup = () => {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+            <Typography variant='body1' mt={1}> Already Registered? <Link href='/login'>Do Login</Link> </Typography>
             <Button
               type="submit"
               fullWidth
@@ -81,17 +79,17 @@ const Signup = () => {
               Or Login with
             <Grid container mt={2}>
       <Grid item xs>
-      <GoogleIcon sx={{ width: 46, height: 46 }}/>
+      <GoogleIcon sx={{cursor: 'pointer', width: 46, height: 46 }}/>
       </Grid>
       <Divider orientation="vertical" flexItem>
       </Divider>
       <Grid item xs>
-      <GitHubIcon onClick={()=> signIn("github")} sx={{cursor: 'pointer', width: 46, height: 46 }}/>
+      <GitHubIcon sx={{cursor: 'pointer', width: 46, height: 46 }}/>
       </Grid>
       <Divider orientation="vertical" flexItem>
       </Divider>
       <Grid item xs>
-      <TwitterIcon sx={{ width: 46, height: 46 }}/>
+      <TwitterIcon sx={{cursor: 'pointer', width: 46, height: 46 }}/>
       </Grid>
     </Grid>
             </Box>

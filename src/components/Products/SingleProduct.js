@@ -4,8 +4,11 @@ import RelatedProducts from '../RelatedProducts/RelatedProducts';
 import { useDeleteProductMutation } from '@/redux/api/apiSlice';
 import { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
+import { auth } from '@/utils/firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const SingleProduct = ({product}) => {
+  const [user] = useAuthState(auth);
   const router = useRouter();
   const [deleteProduct] = useDeleteProductMutation();
   const {_id,name, img, price, rating, category, status, features, description, reviews} = product;
@@ -135,10 +138,13 @@ const SingleProduct = ({product}) => {
                     reviews?.map((review,index) => <Typography ml={1} key={index}><SouthEastIcon mt={1}></SouthEastIcon>{review}</Typography>)
                   }
             </Box>
-            <Box sx={{mx: 4, mt:1}}>
-                    <Button onClick={()=> deleteHandle(_id)} sx={{mt:1}} variant='contained' color='warning'>Delete</Button> 
-                    <Button onClick={()=> editHandle(_id)} sx={{mt:1,ml:1}} variant='contained' color='primary'>Edit</Button>
-            </Box>
+            {
+              user?.email && 
+              <Box sx={{mx: 4, mt:1}}>
+              <Button onClick={()=> deleteHandle(_id)} sx={{mt:1}} variant='contained' color='warning'>Delete</Button> 
+              <Button onClick={()=> editHandle(_id)} sx={{mt:1,ml:1}} variant='contained' color='primary'>Edit</Button>
+              </Box>
+            }
           </Box>
 
           <Box flex={1}>

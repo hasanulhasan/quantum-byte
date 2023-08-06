@@ -18,7 +18,6 @@ const Header = () => {
 
   const handleRoute = (route)=> {
     router.push(`/category/${route}`).then(value => {
-      console.log(value)
       if(value){ setCategoryEl(null) }
     })
   }
@@ -52,6 +51,73 @@ const Header = () => {
       <ul className={styles.mobileNavigation}>
         <li><Link href='/'>Home</Link></li>
         <li><Link href='/about'>About</Link></li>
+        <li>
+              <p aria-controls="category" aria-haspopup="true" onClick={handleCategory}>Category</p>
+              <Menu
+                id="category"
+                anchorEl={categoryEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(categoryEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={()=> handleRoute('Processor')}>Processor</MenuItem>
+                <MenuItem onClick={()=> handleRoute('Motherboard')}>Motherboard</MenuItem>
+                <MenuItem onClick={()=> handleRoute('Monitor')}>Monitor</MenuItem>
+                <MenuItem onClick={()=> handleRoute('RAM')}>RAM</MenuItem>
+                <MenuItem onClick={()=> handleRoute('SSD')}>SSD</MenuItem>
+                <MenuItem onClick={()=> handleRoute('PSU')}>PSU</MenuItem>
+              </Menu>
+                </li>
+              {
+                user?.email? <>
+                <li><Link href='/addpc'><Button variant='contained' color='success'>Add PC</Button></Link></li>
+                <li>
+                  <Box>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                >
+                  <Avatar alt="user avatar" src={`https://ui-avatars.com/api/bold=true?name=${user?.email}`} />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={()=> {router.push('/addComponent').then(data=> {if(data){ handleClose()}})}}>ADD Component</MenuItem>
+                  <MenuItem onClick={()=> {signOut().then(data=> {if(data){ handleClose()}})}}>Logout</MenuItem>
+                </Menu>
+                </Box>
+              </li>
+                </> 
+              : 
+                <>
+                  <li><Link href='/login'><Button variant='contained' color='success'>Login</Button></Link></li>
+                </>
+              }
       </ul>
     </Box>
   )
@@ -110,6 +176,7 @@ const Header = () => {
                 </li>
               {
                 user?.email? <>
+                <li><Link href='/addpc'><Button variant='contained' color='success'>Add PC</Button></Link></li>
                 <li>
                   <Box>
                 <IconButton
@@ -143,7 +210,6 @@ const Header = () => {
                 </Menu>
                 </Box>
               </li>
-                <li><Link href='/addpc'><Button variant='contained' color='success'>Add PC</Button></Link></li>
                 </> : 
                 <>
                   <li><Link href='/login'><Button variant='contained' color='success'>Login</Button></Link></li>
