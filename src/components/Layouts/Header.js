@@ -50,7 +50,7 @@ const Header = () => {
       <Divider />
       <ul className={styles.mobileNavigation}>
         <li><Link href='/'>Home</Link></li>
-        <li><Link href='/about'>About</Link></li>
+        {/* <li><Link href='/about'>About</Link></li> */}
         <li>
               <p aria-controls="category" aria-haspopup="true" onClick={handleCategory}>Category</p>
               <Menu
@@ -137,18 +137,20 @@ const Header = () => {
             >
               <MenuIcon />
             </IconButton>
+            <Link href='/'><img src="/logo.png" alt="logo" height='35px' width='35px'/></Link>
             <Typography
-              color={'goldenrod'}
               variant='h5'
               component={'div'}
-              sx={{ flexGrow: 1, fontWeight: 'bold', cursor: 'pointer'  }}
+              sx={{ flexGrow: 1, fontWeight: 'bold', cursor: 'pointer', ml: 1}}
             >
-              Quantum Byte
+               <Link href='/' style={{textDecoration: 'none', color: 'goldenrod'}}>Quantum Byte
+               
+               </Link>
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block'} }}>
               <ul className={styles.navigationMenu}>
                 <li><Link href='/'>Home</Link></li>
-                <li><Link href='/about'>About</Link></li>
+                {/* <li><Link href='/about'>About</Link></li> */}
                 <li>
               <p aria-controls="category" aria-haspopup="true" onClick={handleCategory}>Category</p>
               <Menu

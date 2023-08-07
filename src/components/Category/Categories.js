@@ -53,7 +53,7 @@ const categories = [
 const Categories = () => {
   return (
     <div>
-      <Typography variant="h2" my={5} sx={{textAlign: 'center'}}>Featured Product</Typography>
+      <Typography variant="h3" my={3} sx={{textAlign: 'center'}}>Featured Product</Typography>
       <Box sx={{ mx: 5, mt: 3 }}>
       <Stack
         direction={{ xs: "column", sm: "row" }}

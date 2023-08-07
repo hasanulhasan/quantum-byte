@@ -1,3 +1,4 @@
+import numberWithCommas from '@/utils/thousandSeparate';
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -22,7 +23,7 @@ const RelatedProductList = ({relatedProduct}) => {
           </ListItemAvatar>
           <ListItemText sx={{marginLeft: '10px'}}
             primary={`${name}`}
-            secondary={`Price $${price}`}
+            secondary={`Price $${numberWithCommas(price)}`}
           />
     </ListItem>
   );

@@ -1,4 +1,5 @@
 import { addProduct } from '@/redux/api/productChoiceSlice';
+import numberWithCommas from '@/utils/thousandSeparate';
 import { Avatar, Button, TableCell, TableRow, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -24,7 +25,7 @@ const SingleChoiceProduct = ({product}) => {
               <TableCell component="th" scope="row">
                 {name}
               </TableCell>
-              <TableCell>${price}</TableCell>
+              <TableCell>{numberWithCommas(price)}&#2547;</TableCell>
               <TableCell>{rating}</TableCell>
               <TableCell>{
               status? 

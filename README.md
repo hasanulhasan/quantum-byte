@@ -4,8 +4,11 @@ A Website for showing tech product and build pc
 ## Project feature
 1- User can see products, product details and see related Products</br>
 2- User can see products by featured category</br>
-3- User can login and logout</br>
+3- User can login with email and password by firebase</br>
 4- Authenticated User can Build Pc</br>
+5- Authenticated User can Add, Delete and Edit component information</br>
+6- Search and Sort filter in Category field</br>
+6- Site is fully responsive</br>
 
 ### `Technology used:`
 

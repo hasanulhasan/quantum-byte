@@ -1,11 +1,14 @@
 import CategoryProducts from '@/components/Category/CategoryProducts';
 import MainLayout from '@/components/Layouts/MainLayout';
-import { useGetCategoryProductsQuery } from '@/redux/api/apiSlice';
-import { Box, Typography } from '@mui/material';
+import { Box, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React from 'react';
+import SearchIcon from '@mui/icons-material/Search';
+import { useDispatch } from 'react-redux';
+import { searchText, sortType } from '@/redux/api/filterSlice';
 
 const CategoryPage = ({products}) => {
+  const dispatch = useDispatch();
   const router = useRouter();
   let content = null;
   if (products?.length === 0) { content = <h1>There is no product</h1> }
@@ -29,6 +32,28 @@ const CategoryPage = ({products}) => {
           {router.query.categoryName}
         </Typography>
       </Box>
+
+      <Box sx={{ '& > :not(style)': { m: 2, mt: 3 }, display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', alignItems: 'flex-end'}}>
+              <SearchIcon sx={{ color: 'action.active', m: 1, my: 0.5 }} />
+              <TextField onChange={(e)=> {dispatch(searchText(e.target.value))}} id="input-with-sx" label="Search product" variant="standard" />
+            </Box>
+      <Box>
+         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-standard-label">Price</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          onChange={(e)=> dispatch(sortType(e.target.value))}
+          label="Price"
+        >
+          <MenuItem value=''>Default</MenuItem>
+          <MenuItem value='asc'>Low to High</MenuItem>
+          <MenuItem value='dec'>High to Low</MenuItem>
+        </Select>
+         </FormControl>
+      </Box>
+    </Box>
       {
         content
       }

@@ -1,3 +1,4 @@
+import numberWithCommas from '@/utils/thousandSeparate';
 import {Box, Button, Card, CardActionArea, CardContent, CardMedia, Rating, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 
@@ -54,7 +55,7 @@ const ProductCard = ({product}) => {
                 </Box>
                 <Box>
                 <Typography variant='body2' gutterBottom component={'div'}>
-                  Price : {price}&#2547;
+                  Price : {numberWithCommas(price)}&#2547;
                 </Typography>
                 <Typography variant='body2' gutterBottom component={'div'}>
                    {status? 

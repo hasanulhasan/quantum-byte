@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
 import { auth } from '@/utils/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import numberWithCommas from '@/utils/thousandSeparate';
 
 const SingleProduct = ({product}) => {
   const [user] = useAuthState(auth);
@@ -97,7 +98,7 @@ const SingleProduct = ({product}) => {
                 </Box>
                 <Box>
                 <Typography variant='h6' gutterBottom component={'div'}>
-                  Price : {price}&#2547;
+                  Price : {numberWithCommas(price)}&#2547; 
                 </Typography>
                 <Typography variant='h6' gutterBottom component={'div'}>
                    {status? 
