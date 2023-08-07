@@ -1,7 +1,7 @@
-import { Box, Button, CardMedia, Container, Rating, Stack, Typography } from '@mui/material';
+import { Box, Button, CardMedia, Container, Rating, Stack, TextField, Typography } from '@mui/material';
 import SouthEastIcon from '@mui/icons-material/SouthEast';
 import RelatedProducts from '../RelatedProducts/RelatedProducts';
-import { useDeleteProductMutation } from '@/redux/api/apiSlice';
+import { useDeleteProductMutation, useEditProductMutation } from '@/redux/api/apiSlice';
 import { useRouter } from 'next/router';
 import toast, { Toaster } from 'react-hot-toast';
 import { auth } from '@/utils/firebase';
@@ -10,6 +10,7 @@ import numberWithCommas from '@/utils/thousandSeparate';
 
 const SingleProduct = ({product}) => {
   const [user] = useAuthState(auth);
+  const [editProduct] = useEditProductMutation();
   const router = useRouter();
   const [deleteProduct] = useDeleteProductMutation();
   const {_id,name, img, price, rating, category, status, features, description, reviews} = product;
@@ -28,6 +29,13 @@ const SingleProduct = ({product}) => {
   }
   const editHandle = ()=> {
     router.push(`/edit/${_id}`)
+  }
+  const handleReview = (e)=> {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    editProduct({id:_id, data: {reviews: [...reviews, data.get('review')]} })
+    e.target.reset();
+    toast.success('Review added')
   }
   return (
     <Box>
@@ -129,6 +137,13 @@ const SingleProduct = ({product}) => {
             >
               Description: {description}
             </Typography>
+            {
+              user?.email && 
+              <Box sx={{mx: 4, my:1}}>
+              <Button onClick={()=> deleteHandle(_id)} sx={{mt:1}} variant='contained' color='warning'>Delete</Button> 
+              <Button onClick={()=> editHandle(_id)} sx={{mt:1,ml:1}} variant='contained' color='primary'>Edit</Button>
+              </Box>
+            }
             <Box sx={{mx: 4, mt:1}}>
                 {
                   reviews.length !== 0  && <Typography variant='h6' gutterBottom component={'div'}>
@@ -139,13 +154,12 @@ const SingleProduct = ({product}) => {
                     reviews?.map((review,index) => <Typography ml={1} key={index}><SouthEastIcon mt={1}></SouthEastIcon>{review}</Typography>)
                   }
             </Box>
-            {
-              user?.email && 
-              <Box sx={{mx: 4, mt:1}}>
-              <Button onClick={()=> deleteHandle(_id)} sx={{mt:1}} variant='contained' color='warning'>Delete</Button> 
-              <Button onClick={()=> editHandle(_id)} sx={{mt:1,ml:1}} variant='contained' color='primary'>Edit</Button>
-              </Box>
-            }
+            
+            <Box sx={{display: 'flex', mx: 4, mt:2}} component="form" onSubmit={handleReview}>
+            <TextField name='review' id="outlined-multiline-static" label="Write a review" multiline fullWidth/>
+            <Button type='submit' variant='contained' color='success' sx={{ml:1}}>Submit</Button>
+            </Box>
+
           </Box>
 
           <Box flex={1}>

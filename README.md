@@ -8,7 +8,7 @@ A Website for showing tech product and build pc
 4- Authenticated User can Build Pc</br>
 5- Authenticated User can Add, Delete and Edit component information</br>
 6- Search and Sort filter in Category field</br>
-6- Site is fully responsive</br>
+7- Site is fully responsive</br>
 
 ### `Technology used:`
 
