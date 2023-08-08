@@ -36,6 +36,7 @@ const SingleProduct = ({product}) => {
     editProduct({id:_id, data: {reviews: [...reviews, data.get('review')]} })
     e.target.reset();
     toast.success('Review added')
+    window.location.reload();
   }
   return (
     <Box>
@@ -168,7 +169,7 @@ const SingleProduct = ({product}) => {
           
         </Stack>
       </Container>
-      <Toaster position="top-right"/>
+      <Toaster/>
     </Box>
   );
 };

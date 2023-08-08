@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Checkbox, Container, CssBaseline, Divider, FormControlLabel, Grid, TextField, Typography } from '@mui/material';
+import { Avatar, Box, Button, Container, CssBaseline, Divider, Grid, TextField, Typography } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -11,7 +11,7 @@ import Link from 'next/link';
 
 const Login = () => {
   const router =useRouter();
-  const [signInWithEmailAndPassword,user,loading,error] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword,error] = useSignInWithEmailAndPassword(auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();

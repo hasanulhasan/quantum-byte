@@ -68,7 +68,7 @@ CategoryPage.getLayout = function getLayout(page){
 }
 
 export const getStaticPaths = async () => {
-  const res = await fetch('http://localhost:9000/v1/products')
+  const res = await fetch('https://quantum-byte-backend-hasanulhasan.vercel.app/v1/products')
   const {data: products} = await res.json();
 
   const paths = products.map(product=> ({
@@ -79,7 +79,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context)=> {
   const {params} = context;
-  const res = await fetch(`http://localhost:9000/v1/products/category/${params.categoryName}`)
+  const res = await fetch(`https://quantum-byte-backend-hasanulhasan.vercel.app/v1/products/category/${params.categoryName}`)
   const data = await res.json();
   // console.log(data)
   return {

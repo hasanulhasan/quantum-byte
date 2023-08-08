@@ -2,21 +2,6 @@ import React from "react";
 import { Box, Divider, Stack, styled, Typography } from "@mui/material";
 import CategoryCard from "./CategoryCard";
 
-const StyledBox = styled(Box)({
-  height: 200,
-  width: "100%",
-  cursor: "pointer",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "center center",
-  backgroundSize: "cover",
-});
-const StyledTypography = styled(Typography)({
-  margin: "25% 50px 25% 50px",
-  background: "white",
-  opacity: "0.8",
-  borderRadius: '10px'
-});
-
 const categories = [
   {
     id: 1,

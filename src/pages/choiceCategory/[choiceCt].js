@@ -1,7 +1,7 @@
 import ChoiceCategoryProducts from '@/components/ChoiceCategory/ChoiceCategoryProducts';
 import MainLayout from '@/components/Layouts/MainLayout';
 import { useGetCategoryProductsQuery } from '@/redux/api/apiSlice';
-import { Box, Typography } from '@mui/material';
+import { Box, LinearProgress, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -11,7 +11,9 @@ const ChoiceCategory = () => {
   const products = data?.data
 
   let content = null;
-  if (isLoading) content = <h1>Loading...</h1>
+  if (isLoading) content = <Stack sx={{ width: '100%', color: 'grey.500'}}>
+      <LinearProgress color="success" />
+    </Stack>
   if (!isLoading && isError) content = <h1>There is an error</h1>;
   if (!isLoading && !isError && products?.length === 0) { content = <h1>There is no product</h1> }
   if (!isLoading && !isError && products?.length > 0) { content = <ChoiceCategoryProducts products={products}></ChoiceCategoryProducts> }

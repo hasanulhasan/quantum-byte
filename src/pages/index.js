@@ -3,6 +3,7 @@ import MainLayout from '@/components/Layouts/MainLayout'
 import Head from 'next/head'
 import AllProducts from '@/components/Products/AllProducts'
 import Categories from '@/components/Category/Categories'
+import { LinearProgress, Stack } from '@mui/material'
 export default function Home({products}) {
   
   return (
@@ -25,7 +26,7 @@ Home.getLayout = function getLayout(page){
 }
 
 export const getStaticProps = async ()=> {
-  const res = await fetch('http://localhost:9000/v1/products');
+  const res = await fetch('https://quantum-byte-backend-hasanulhasan.vercel.app/v1/products');
   const data = await res.json();
   return {
     props: {

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/aria-proptypes */
+/* eslint-disable @next/next/no-img-element */
 import { AppBar, Avatar, Box, Button, Divider, Drawer, IconButton,Menu, MenuItem, Toolbar, Typography } from '@mui/material';
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';

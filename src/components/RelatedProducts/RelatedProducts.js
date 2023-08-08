@@ -1,4 +1,4 @@
-import { Box,List,Typography,} from "@mui/material";
+import { Box,LinearProgress,List,Stack,Typography,} from "@mui/material";
 import RelatedProductList from "./RelatedProductList";
 import { useGetCategoryProductsQuery } from "@/redux/api/apiSlice";
 
@@ -7,7 +7,9 @@ const RelatedProducts = ({category, id}) => {
   const relatedProducts = data?.data
   
   let content = null;
-  if (isLoading) content = <h1>Loading...</h1>
+  if (isLoading) content = <Stack sx={{ width: '100%', color: 'grey.500'}}>
+      <LinearProgress color="success" />
+    </Stack>
   if (!isLoading && isError) content = <h1>There is an error</h1>;
   if (!isLoading && !isError && relatedProducts?.length === 1) { content = <h5>There is no other Related product like this</h5> }
   if (!isLoading && !isError && relatedProducts?.length > 1) { 

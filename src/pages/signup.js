@@ -2,8 +2,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
@@ -13,18 +11,26 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import MainLayout from '@/components/Layouts/MainLayout';
 import { Divider, Grid } from '@mui/material';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import { signIn } from 'next-auth/react';
 import {auth} from '../utils/firebase'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Signup = () => {
-  const [signInWithEmailAndPassword,user,loading,error] = useCreateUserWithEmailAndPassword(auth);
+  const router = useRouter();
+  const [signInWithEmailAndPassword,error] = useCreateUserWithEmailAndPassword(auth);
   
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    signInWithEmailAndPassword(data.get('email'), data.get('password'))
+    signInWithEmailAndPassword(data.get('email'), data.get('password')).then(data=> {
+      if(data){
+        router.push('/')
+      }
+    }).catch(err=> {alert('You have entered wrong password or email')})
+    if(error){
+      console.log(error)
+    }
   };
 
   return (

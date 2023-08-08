@@ -12,11 +12,11 @@ A Website for showing tech product and build pc
 
 ### `Technology used:`
 
-𝑭𝒓𝒐𝒏𝒕 𝑬𝒏𝒅: Next JS, Material UI, Redux Toolkit, RTK Query, React JS, NextAuth </br>
+𝑭𝒓𝒐𝒏𝒕 𝑬𝒏𝒅: Next JS, Material UI, Redux Toolkit, RTK Query, React JS, Firebase </br>
 𝑩𝒂𝒄𝒌 𝑬𝒏𝒅: TypeScript, Node Js, Express Js, MongoDB, Mongoose. </br>
 
 
 ### `Live link` 
-coming soon...........
+https://quantum-byte.vercel.app/
 ### `Back End` 
 https://github.com/hasanulhasan/quantum-byte-backend
